@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "davesvibranium:vibranium_ingot"
+        },
+        {
+            "item": "minecraft:glass"
+        }
+    ],
+    "result": {
+        "count": 2,
+        "item": "davesvibranium:vibranium_window"
+    }
+}

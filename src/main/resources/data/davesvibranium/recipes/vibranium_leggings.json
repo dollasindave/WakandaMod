@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      "X": {
+        "item": "davesvibranium:vibranium_ingot"
+      }
+    },
+    "pattern": [
+      "XXX",
+      "X X",
+      "X X"
+    ],
+    "result": {
+      "item": "davesvibranium:vibranium_leggings"
+    }
+  }
