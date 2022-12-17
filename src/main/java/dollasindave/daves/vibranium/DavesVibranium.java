@@ -9,8 +9,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -26,6 +30,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreConfiguredFeatures;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
@@ -35,6 +40,8 @@ import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import dollasindave.daves.vibranium.block.custom.HeartShapedHerbCropBlock;
 
 public class DavesVibranium implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -50,7 +57,9 @@ public class DavesVibranium implements ModInitializer {
 
 	public static final Item VIBRANIUM_INGOT = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD));
 
-	public static final Item RAW_VIBRANIUM = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD));
+	public static final Item VIBRANIUM_CAPSULE = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD));
+
+	public static final Item VIBRANIUM_SHARD = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD));
 
 	public static final Block VIBRANIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(50F, 1200F).sounds(BlockSoundGroup.METAL).requiresTool());
 
@@ -59,19 +68,24 @@ public class DavesVibranium implements ModInitializer {
 	public static final ArmorMaterial VIBRANIUM_ARMOR = new VibraniumArmor();
 
 	public static final Block VIBRANIUM_WINDOW = new Block(FabricBlockSettings.copy(Blocks.GLASS).strength(25F, 1200F).nonOpaque().requiresTool());
+
+	public static final Block HEART_SHAPED_HERB = new HeartShapedHerbCropBlock(FabricBlockSettings.copy(Blocks.WHEAT).strength(0F, 0F).nonOpaque());
+
+	public static final Item HEART_SOUP = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD)
+	.food(new FoodComponent.Builder().hunger(3).saturationModifier(1F).statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1200, 1), 1).build()));
 		
 	private static ConfiguredFeature<?, ?> OVERWORLD_VIBRANIUM_ORE_CONFIGURED_FEATURE = new ConfiguredFeature
       (Feature.ORE, new OreFeatureConfig(
           OreConfiguredFeatures.DEEPSLATE_ORE_REPLACEABLES,
           DavesVibranium.VIBRANIUM_ORE.getDefaultState(),
-          4)); // vein size
+          3)); // vein size
  
   public static PlacedFeature OVERWORLD_VIBRANIUM_ORE_PLACED_FEATURE = new PlacedFeature(
       RegistryEntry.of(OVERWORLD_VIBRANIUM_ORE_CONFIGURED_FEATURE),
       Arrays.asList(
-          CountPlacementModifier.of(2), // number of veins per chunk
+          CountPlacementModifier.of(1), // number of veins per chunk
           SquarePlacementModifier.of(), // spreading horizontally
-          HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(-32))
+          HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(-40))
       )); // height
 
 	@Override
@@ -81,10 +95,11 @@ public class DavesVibranium implements ModInitializer {
         new Identifier("daves_vibranium", "overworld_vibranium_ore"), OVERWORLD_VIBRANIUM_ORE_CONFIGURED_FEATURE);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier("daves_vibranium", "overworld_vibranium_ore"),
         OVERWORLD_VIBRANIUM_ORE_PLACED_FEATURE);
-    BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES,
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU), GenerationStep.Feature.UNDERGROUND_ORES,
         RegistryKey.of(Registry.PLACED_FEATURE_KEY,
             new Identifier("daves_vibranium", "overworld_vibranium_ore")));
 			//repalce .foundInOverworld() with .includeByKey(BiomeKeys.BIOME)
+			//dont forget about vertical biomes
 		//blocks
 		Registry.register(Registry.BLOCK, new Identifier("davesvibranium", "vibranium_block"), VIBRANIUM_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_block"), new BlockItem(VIBRANIUM_BLOCK, new Item.Settings().group(DavesVibranium.WAKANDA_MOD)));
@@ -94,10 +109,17 @@ public class DavesVibranium implements ModInitializer {
 
 		Registry.register(Registry.BLOCK, new Identifier("davesvibranium", "vibranium_window"), VIBRANIUM_WINDOW);
 		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_window"), new BlockItem(VIBRANIUM_WINDOW, new Item.Settings().group(DavesVibranium.WAKANDA_MOD)));
+
+		Registry.register(Registry.BLOCK, new Identifier("davesvibranium", "heart_shaped_herb"), HEART_SHAPED_HERB);
+		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "heart_shaped_herb"), new AliasedBlockItem(HEART_SHAPED_HERB, new Item.Settings().group(DavesVibranium.WAKANDA_MOD)));
 		//items
 		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_ingot"), VIBRANIUM_INGOT);
 
-		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "raw_vibranium"), RAW_VIBRANIUM);
+		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_capsule"), VIBRANIUM_CAPSULE);
+
+		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_shard"), VIBRANIUM_SHARD);
+
+		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "heart_soup"), HEART_SOUP);
 		//armor
 		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_helmet"), new BaseArmor(VIBRANIUM_ARMOR, EquipmentSlot.HEAD));
 		Registry.register(Registry.ITEM, new Identifier("davesvibranium", "vibranium_chestplate"), new BaseArmor(VIBRANIUM_ARMOR, EquipmentSlot.CHEST));

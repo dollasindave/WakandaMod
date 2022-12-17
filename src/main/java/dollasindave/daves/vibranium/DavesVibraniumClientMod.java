@@ -9,6 +9,8 @@ import net.minecraft.client.render.RenderLayer;
 public class DavesVibraniumClientMod implements ClientModInitializer{
     @Override
     public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(DavesVibranium.HEART_SHAPED_HERB, RenderLayer.getCutout());
+
         BlockRenderLayerMap.INSTANCE.putBlock(DavesVibranium.VIBRANIUM_WINDOW, RenderLayer.getTranslucent());
         class myBlock extends Block{
             public myBlock() {
