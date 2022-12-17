@@ -1,0 +1,50 @@
+{
+    "type": "minecraft:block",
+    "functions": [
+      {
+        "function": "minecraft:explosion_decay"
+      }
+    ],
+    "pools": [
+      {
+        "bonus_rolls": 0.0,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "davesvibranium:heart_shaped_herb"
+          }
+        ],
+        "rolls": 1.0
+      },
+      {
+        "bonus_rolls": 0.0,
+        "conditions": [
+          {
+            "block": "davesvibranium:heart_shaped_herb",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "5"
+            }
+          }
+        ],
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "functions": [
+              {
+                "enchantment": "minecraft:fortune",
+                "formula": "minecraft:binomial_with_bonus_count",
+                "function": "minecraft:apply_bonus",
+                "parameters": {
+                  "extra": 2,
+                  "probability": 0.05
+                }
+              }
+            ],
+            "name": "davesvibranium:heart_shaped_herb"
+          }
+        ],
+        "rolls": 1.0
+      }
+    ]
+  }

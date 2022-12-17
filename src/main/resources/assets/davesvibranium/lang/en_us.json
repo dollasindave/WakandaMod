@@ -1,0 +1,18 @@
+{
+    "item.davesvibranium.vibranium_ingot": "Vibranium Ingot",
+    "item.davesvibranium.vibranium_shard": "Vibranium Shard",
+    "item.davesvibranium.heart_soup": "Heart Soup",
+    "item.davesvibranium.heart_shaped_herb": "Heart Shaped Herb",
+    "item.davesvibranium.vibranium_capsule": "Vibranium Capsule",
+
+    "block.davesvibranium.vibranium_block": "Vibranium Block",
+    "block.davesvibranium.vibranium_ore": "Vibranium Ore",
+    "block.davesvibranium.vibranium_window": "Vibranium Window",
+
+    "item.davesvibranium.vibranium_helmet": "Vibranium Helmet",
+    "item.davesvibranium.vibranium_chestplate": "Vibranium Chestplate",
+    "item.davesvibranium.vibranium_leggings": "Vibranium Leggings",
+    "item.davesvibranium.vibranium_boots": "Sneakers",
+
+    "itemGroup.davesvibranium.general": "Wakanda Mod"
+}

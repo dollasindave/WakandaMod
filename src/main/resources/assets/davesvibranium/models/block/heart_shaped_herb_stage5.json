@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/crop",
+    "textures": {
+        "crop": "davesvibranium:block/heart_shaped_herb_stage5"
+    }
+}

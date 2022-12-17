@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "davesvibranium:vibranium_shard"
+        },
+        {
+            "item": "davesvibranium:vibranium_shard"
+        },
+        {
+            "item": "davesvibranium:vibranium_shard"
+        },
+        {
+            "item": "davesvibranium:vibranium_shard"
+        },
+        {
+            "item": "minecraft:glass_bottle"
+        }
+    ],
+    "result": {
+        "item": "davesvibranium:vibranium_capsule",
+        "count": 1
+    }
+}
