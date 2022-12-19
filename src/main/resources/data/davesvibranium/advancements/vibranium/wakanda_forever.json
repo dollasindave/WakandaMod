@@ -1,0 +1,56 @@
+{
+    "parent": "davesvibranium:vibranium/root",
+    "criteria": {
+      "vibranium_armor": {
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "davesvibranium:vibranium_helmet"
+              ]
+            },
+            {
+              "items": [
+                "davesvibranium:vibranium_chestplate"
+              ]
+            },
+            {
+              "items": [
+                "davesvibranium:vibranium_leggings"
+              ]
+            },
+            {
+              "items": [
+                "davesvibranium:vibranium_boots"
+              ]
+            }
+          ]
+        },
+        "trigger": "minecraft:inventory_changed"
+      }
+    },
+    "display": {
+      "announce_to_chat": true,
+      "description": {
+        "translate": "Put On The Suit"
+      },
+      "frame": "challenge",
+      "hidden": false,
+      "icon": {
+        "item": "davesvibranium:vibranium_helmet",
+        "nbt": "{Damage:0}"
+      },
+      "show_toast": true,
+      "title": {
+        "translate": "Wakanda Forever"
+      }
+    },
+    "requirements": [
+      [
+        "vibranium_armor"
+      ]
+    ],
+    "rewards": {
+      "experience": 150
+    }
+  }

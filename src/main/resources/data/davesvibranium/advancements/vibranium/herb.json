@@ -1,0 +1,41 @@
+{
+    "parent": "davesvibranium:vibranium/root",
+    "criteria": {
+      "has_herb": {
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "davesvibranium:heart_shaped_herb"
+              ]
+            }
+          ]
+        },
+        "trigger": "minecraft:inventory_changed"
+      }
+    },
+    "display": {
+      "announce_to_chat": true,
+      "description": {
+        "translate": "Have Drugs"
+      },
+      "frame": "task",
+      "hidden": false,
+      "icon": {
+        "item": "davesvibranium:heart_soup",
+        "nbt": "{Damage:0}"
+      },
+      "show_toast": true,
+      "title": {
+        "translate": "Don't Do Drugs"
+      }
+    },
+    "requirements": [
+      [
+        "has_herb"
+      ]
+    ],
+    "rewards": {
+      "experience": 150
+    }
+  }
