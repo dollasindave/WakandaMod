@@ -18,6 +18,7 @@ import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -72,7 +73,8 @@ public class DavesVibranium implements ModInitializer {
 	public static final Block HEART_SHAPED_HERB = new HeartShapedHerbCropBlock(FabricBlockSettings.copy(Blocks.WHEAT).strength(0F, 0F).nonOpaque());
 
 	public static final Item HEART_SOUP = new Item(new Item.Settings().group(DavesVibranium.WAKANDA_MOD)
-	.food(new FoodComponent.Builder().hunger(3).saturationModifier(1F).statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1200, 1), 1).build()));
+	.food(new FoodComponent.Builder().hunger(3).saturationModifier(1F).statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1200, 1), 1)
+	.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200), 1).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1200), 1).build()));
 		
 	private static ConfiguredFeature<?, ?> OVERWORLD_VIBRANIUM_ORE_CONFIGURED_FEATURE = new ConfiguredFeature
       (Feature.ORE, new OreFeatureConfig(
