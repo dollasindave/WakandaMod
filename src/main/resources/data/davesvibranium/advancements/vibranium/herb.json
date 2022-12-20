@@ -1,12 +1,12 @@
 {
     "parent": "davesvibranium:vibranium/root",
     "criteria": {
-      "has_herb": {
+      "has_soup": {
         "conditions": {
           "items": [
             {
               "items": [
-                "davesvibranium:heart_shaped_herb"
+                "davesvibranium:heart_soup"
               ]
             }
           ]
@@ -32,7 +32,7 @@
     },
     "requirements": [
       [
-        "has_herb"
+        "has_soup"
       ]
     ],
     "rewards": {
